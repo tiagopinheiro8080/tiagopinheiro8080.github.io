@@ -66,13 +66,20 @@
             </div>
         </section>
 
-        <!-- Sobre Mim Section -->
+        <!-- Sobre Mim Section (UPDATED) -->
         <section id="sobre" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
-            <div class="container mx-auto px-6 max-w-3xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Sobre Mim</h2>
-                <div class="mt-6 text-lg text-slate-300 leading-relaxed space-y-4">
-                    <p>Olá! Eu sou o Tiago Pinheiro, um desenvolvedor de 28 anos apaixonado por tecnologia e por transformar ideias em experiências digitais interativas e significativas.</p>
-                    <p>Com foco em tecnologias front-end, busco construir aplicações funcionais, visualmente atraentes e com uma ótima experiência para o usuário. Estou sempre aprendendo e explorando novas maneiras de construir para a web.</p>
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-1 flex justify-center">
+                        <img src="https://i.imgur.com/nOkgFdA.jpeg" alt="Foto de Tiago Pinheiro" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-lg ring-4 ring-slate-700">
+                    </div>
+                    <div class="md:col-span-2 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Sobre Mim</h2>
+                        <div class="mt-6 text-lg text-slate-300 leading-relaxed space-y-4">
+                            <p>Olá! Eu sou o Tiago Pinheiro, um desenvolvedor de 28 anos apaixonado por tecnologia e por transformar ideias em experiências digitais interativas e significativas.</p>
+                            <p>Com foco em tecnologias front-end, busco construir aplicações funcionais, visualmente atraentes e com uma ótima experiência para o usuário. Estou sempre aprendendo e explorando novas maneiras de construir para a web.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -99,7 +106,6 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white">Projetos em Destaque</h2>
                 <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
                     
-                    <!-- Projeto 1: Quiz Bíblico -->
                     <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
                         <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/FBBF24?text=Quiz+Bíblico" alt="[Imagem do projeto Quiz Bíblico]">
                         <div class="p-6 flex flex-col flex-grow">
@@ -117,7 +123,6 @@
                         </div>
                     </div>
 
-                    <!-- Projeto 2: Gerador de Currículos -->
                     <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
                         <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/3b82f6?text=Gerador+CV" alt="[Imagem do projeto Gerador de Currículos]">
                         <div class="p-6 flex flex-col flex-grow">
@@ -190,7 +195,7 @@
 
         // Typing effect
         const typingElement = document.getElementById('typing-effect');
-        const words = ["Desenvolvedor Web", "Apaixonado por criar experiencias digitais"];
+        const words = ["Desenvolvedor Web", "Criador de Experiências Digitais"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -223,4 +228,3 @@
 
 </body>
 </html>
-
