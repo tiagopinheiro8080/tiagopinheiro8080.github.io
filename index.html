@@ -66,7 +66,7 @@
             </div>
         </section>
 
-        <!-- Sobre Mim Section (UPDATED) -->
+        <!-- Sobre Mim Section -->
         <section id="sobre" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
             <div class="container mx-auto px-6 max-w-5xl">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
@@ -103,43 +103,71 @@
         <!-- Projetos Section -->
         <section id="projetos" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-white">Projetos em Destaque</h2>
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-                    
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16">Projetos</h2>
+
+                <!-- Subseção: Soluções para Negócios Locais -->
+                <div class="max-w-6xl mx-auto mb-16">
+                    <h3 class="text-2xl md:text-3xl font-bold text-sky-400 mb-2 text-center">Soluções para Negócios Locais</h3>
+                    <p class="text-center text-slate-400 mb-12 max-w-3xl mx-auto">Demonstrações de produtos reais desenvolvidos para automatizar e impulsionar pequenos e médios negócios.</p>
+
                     <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                        <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/FBBF24?text=Quiz+Bíblico" alt="[Imagem do projeto Quiz Bíblico]">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold text-white">Quiz Bíblico - Jornada da Fé</h3>
-                            <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Um PWA de Quiz interativo com 500 perguntas sobre a Bíblia, utilizando Firebase para autenticação e salvamento de progresso em tempo real.</p>
+                        <img class="h-64 w-full object-cover object-top" src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=2535&auto=format&fit=crop" alt="Imagem de uma pizza italiana saborosa">
+                        <div class="p-6 md:p-8">
+                            <h4 class="text-2xl font-bold text-white">Cardápio Digital com Painel de Controle</h4>
+                            <p class="mt-4 text-slate-300 leading-relaxed">Uma solução completa para restaurantes que digitaliza o cardápio, otimiza o fluxo de pedidos via WhatsApp e capacita o dono do negócio com total controle sobre seus produtos através de um painel administrativo.</p>
                             <div class="mt-6 flex flex-wrap gap-2">
                                 <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
                                 <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
                                 <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full">Firebase</span>
+                                <span class="bg-green-900/50 text-green-300 text-sm font-medium px-3 py-1 rounded-full">PWA</span>
                             </div>
                             <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                                <a href="https://quiz-biblico-cf2f9.web.app/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Projeto</a>
-                                <a href="https://github.com/tiagopinheiro8080/quiz-biblico" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Ver Código</a>
+                                <a href="https://exquisite-youtiao-060952.netlify.app/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Demostração</a>
+                                <!-- Você pode adicionar o link do painel admin aqui quando estiver online -->
+                                <!-- <a href="#" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Testar Painel</a> -->
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                        <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/3b82f6?text=Gerador+CV" alt="[Imagem do projeto Gerador de Currículos]">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold text-white">Gerador de Currículos PRO</h3>
-                            <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Aplicação que permite criar currículos profissionais a partir de múltiplos templates e temas de cores, com pré-visualização em tempo real e exportação para PDF.</p>
-                            <div class="mt-6 flex flex-wrap gap-2">
-                                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
-                                <span class="bg-red-900/50 text-red-300 text-sm font-medium px-3 py-1 rounded-full">jsPDF</span>
+                <!-- Subseção: Projetos Pessoais -->
+                <div class="max-w-5xl mx-auto">
+                    <h3 class="text-2xl md:text-3xl font-bold text-sky-400 mb-12 text-center">Projetos Pessoais</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                        <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/FBBF24?text=Quiz+Bíblico" alt="[Imagem do projeto Quiz Bíblico]">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-white">Quiz Bíblico - Jornada da Fé</h3>
+                                <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Um PWA de Quiz interativo com 500 perguntas sobre a Bíblia, utilizando Firebase para autenticação e salvamento de progresso em tempo real.</p>
+                                <div class="mt-6 flex flex-wrap gap-2">
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                                    <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full">Firebase</span>
+                                </div>
+                                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                                    <a href="https://quiz-biblico-cf2f9.web.app/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Projeto</a>
+                                    <a href="https://github.com/tiagopinheiro8080/quiz-biblico" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Ver Código</a>
+                                </div>
                             </div>
-                            <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                                <a href="https://tiagopinheiro8080.github.io/gerador-de-curriculos/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Projeto</a>
-                                <a href="https://github.com/tiagopinheiro8080/gerador-de-curriculos" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Ver Código</a>
+                        </div>
+
+                        <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/3b82f6?text=Gerador+CV" alt="[Imagem do projeto Gerador de Currículos]">
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-white">Gerador de Currículos PRO</h3>
+                                <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Aplicação que permite criar currículos profissionais a partir de múltiplos templates e temas de cores, com pré-visualização em tempo real e exportação para PDF.</p>
+                                <div class="mt-6 flex flex-wrap gap-2">
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                                    <span class="bg-red-900/50 text-red-300 text-sm font-medium px-3 py-1 rounded-full">jsPDF</span>
+                                </div>
+                                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                                    <a href="https://tiagopinheiro8080.github.io/gerador-de-curriculos/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Projeto</a>
+                                    <a href="https://github.com/tiagopinheiro8080/gerador-de-curriculos" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Ver Código</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -195,7 +223,7 @@
 
         // Typing effect
         const typingElement = document.getElementById('typing-effect');
-        const words = ["Desenvolvedor Web", "Criador de Experiências Digitais"];
+        const words = ["Desenvolvedor Web", "Criador de Experiências Digitais", "Soluções para Negócios"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -210,7 +238,7 @@
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 100 : 200;
+            let typeSpeed = isDeleting ? 75 : 150;
 
             if (!isDeleting && charIndex === currentWord.length) {
                 typeSpeed = 2000; // Pause at end of word
@@ -228,3 +256,4 @@
 
 </body>
 </html>
+
