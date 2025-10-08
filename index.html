@@ -22,62 +22,191 @@
             transform: translateY(0);
         }
         .typing-cursor {
-            border-right: 2px solid #38bdf8; /* sky-400 */
+            border-right: 2px solid #38bdf8;
             animation: blink 1s step-end infinite;
         }
         @keyframes blink {
             from, to { border-color: transparent }
             50% { border-color: #38bdf8; }
         }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .skill-card {
+            transition: all 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.2);
+        }
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-12px);
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .project-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-300">
 
     <!-- Header & Navigation -->
-    <header class="bg-slate-900/70 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-black/10">
+    <header class="bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-black/10 border-b border-slate-800">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">Tiago Pinheiro</a>
+            <a href="#" class="text-2xl font-bold text-white hover:text-sky-400 transition-colors">TP</a>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8">
-                <a href="#sobre" class="text-slate-300 hover:text-sky-400 transition-colors">Sobre</a>
-                <a href="#habilidades" class="text-slate-300 hover:text-sky-400 transition-colors">Habilidades</a>
-                <a href="#projetos" class="text-slate-300 hover:text-sky-400 transition-colors">Projetos</a>
-                <a href="#contato" class="text-slate-300 hover:text-sky-400 transition-colors">Contato</a>
+                <a href="#sobre" class="text-slate-300 hover:text-sky-400 transition-colors font-medium">Sobre</a>
+                <a href="#habilidades" class="text-slate-300 hover:text-sky-400 transition-colors font-medium">Habilidades</a>
+                <a href="#projetos" class="text-slate-300 hover:text-sky-400 transition-colors font-medium">Projetos</a>
+                <a href="#contato" class="text-slate-300 hover:text-sky-400 transition-colors font-medium">Contato</a>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-slate-800 shadow-2xl md:hidden z-50">
+            <div class="p-6">
+                <button id="close-menu-btn" class="text-white mb-8 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div class="flex flex-col space-y-6">
+                    <a href="#sobre" class="text-slate-300 hover:text-sky-400 transition-colors text-lg mobile-link">Sobre</a>
+                    <a href="#habilidades" class="text-slate-300 hover:text-sky-400 transition-colors text-lg mobile-link">Habilidades</a>
+                    <a href="#projetos" class="text-slate-300 hover:text-sky-400 transition-colors text-lg mobile-link">Projetos</a>
+                    <a href="#contato" class="text-slate-300 hover:text-sky-400 transition-colors text-lg mobile-link">Contato</a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="py-24 sm:py-40">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">Tiago Pinheiro</h1>
-                <p class="mt-4 text-lg md:text-2xl text-sky-400 h-8 md:h-10"><span id="typing-effect"></span><span class="typing-cursor"></span></p>
-                <div class="mt-8 flex justify-center items-center space-x-6">
-                    <a href="https://github.com/tiagopinheiro8080" target="_blank" class="text-slate-400 hover:text-sky-400 transition-transform hover:scale-110" aria-label="GitHub">
+        <section class="hero-gradient py-24 sm:py-40 relative">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="floating">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-4">Tiago Pinheiro</h1>
+                    <p class="mt-4 text-xl md:text-3xl text-sky-400 h-8 md:h-12"><span id="typing-effect"></span><span class="typing-cursor"></span></p>
+                </div>
+                
+                <p class="mt-8 text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
+                    Transformando ideias em experiências digitais interativas e funcionais
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#projetos" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-8 rounded-lg transition-all hover:scale-105 shadow-lg shadow-sky-500/30">
+                        Ver Meus Projetos
+                    </a>
+                    <a href="#contato" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 px-8 rounded-lg transition-all hover:scale-105 border border-slate-600">
+                        Entrar em Contato
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="mt-12 flex justify-center items-center space-x-6">
+                    <a href="https://github.com/tiagopinheiro8080" target="_blank" class="text-slate-400 hover:text-sky-400 transition-all hover:scale-125" aria-label="GitHub">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
                     </a>
-                    <a href="https://www.linkedin.com/in/tiagopinheiro8080/" target="_blank" class="text-slate-400 hover:text-sky-400 transition-transform hover:scale-110" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/tiagopinheiro8080/" target="_blank" class="text-slate-400 hover:text-sky-400 transition-all hover:scale-125" aria-label="LinkedIn">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     </a>
-                    <a href="mailto:tiagopinheiro8080@gmail.com" class="text-slate-400 hover:text-sky-400 transition-transform hover:scale-110" aria-label="Email">
+                    <a href="mailto:tiagopinheiro8080@gmail.com" class="text-slate-400 hover:text-sky-400 transition-all hover:scale-125" aria-label="Email">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- Stats Section -->
+        <section class="py-16 bg-slate-800/50 border-y border-slate-700">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-sky-400 counter" data-target="3">0</div>
+                        <p class="mt-2 text-slate-400 font-medium">Projetos Concluídos</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-sky-400 counter" data-target="7">0</div>
+                        <p class="mt-2 text-slate-400 font-medium">Tecnologias</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-sky-400 counter" data-target="2">0</div>
+                        <p class="mt-2 text-slate-400 font-medium">Anos de Experiência</p>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-sky-400 counter" data-target="100">0</div>
+                        <p class="mt-2 text-slate-400 font-medium">Dedicação %</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Sobre Mim Section -->
-        <section id="sobre" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
+        <section id="sobre" class="py-20 sm:py-28 fade-in-section">
             <div class="container mx-auto px-6 max-w-5xl">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
                     <div class="md:col-span-1 flex justify-center">
-                        <img src="https://i.imgur.com/nOkgFdA.jpeg" alt="Foto de Tiago Pinheiro" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-lg ring-4 ring-slate-700">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-sky-500 rounded-full blur-2xl opacity-20"></div>
+                            <img src="https://i.imgur.com/nOkgFdA.jpeg" alt="Foto de Tiago Pinheiro" class="relative w-56 h-56 md:w-72 md:h-72 rounded-full object-cover shadow-2xl ring-4 ring-sky-500/20">
+                        </div>
                     </div>
                     <div class="md:col-span-2 text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white">Sobre Mim</h2>
-                        <div class="mt-6 text-lg text-slate-300 leading-relaxed space-y-4">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Sobre Mim</h2>
+                        <div class="text-lg text-slate-300 leading-relaxed space-y-4">
                             <p>Olá! Eu sou o Tiago Pinheiro, um desenvolvedor de 28 anos apaixonado por tecnologia e por transformar ideias em experiências digitais interativas e significativas.</p>
                             <p>Com foco em tecnologias modernas, busco construir aplicações funcionais, visualmente atraentes e com uma ótima experiência para o usuário. Meu principal objetivo é criar soluções digitais que resolvem problemas reais para negócios locais.</p>
+                            <p class="text-sky-400 font-semibold">💡 Especializado em desenvolvimento front-end e soluções completas com Firebase.</p>
                         </div>
                     </div>
                 </div>
@@ -85,94 +214,197 @@
         </section>
 
         <!-- Habilidades Section -->
-        <section id="habilidades" class="py-20 sm:py-28 fade-in-section">
-            <div class="container mx-auto px-6 max-w-4xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Habilidades & Tecnologias</h2>
-                <div class="mt-12 flex flex-wrap justify-center gap-4">
-                    <span class="bg-slate-700 text-sky-300 text-lg font-semibold px-5 py-2 rounded-lg">HTML5</span>
-                    <span class="bg-slate-700 text-sky-300 text-lg font-semibold px-5 py-2 rounded-lg">CSS3</span>
-                    <span class="bg-slate-700 text-sky-300 text-lg font-semibold px-5 py-2 rounded-lg">Tailwind CSS</span>
-                    <span class="bg-slate-700 text-sky-300 text-lg font-semibold px-5 py-2 rounded-lg">JavaScript</span>
-                    <span class="bg-slate-700 text-sky-300 text-lg font-semibold px-5 py-2 rounded-lg">Firebase</span>
-                    <span class="bg-slate-700 text-sky-300 text-lg font-semibold px-5 py-2 rounded-lg">Git & GitHub</span>
-                    <span class="bg-slate-700 text-sky-300 text-lg font-semibold px-5 py-2 rounded-lg">Design Responsivo</span>
+        <section id="habilidades" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">Habilidades & Tecnologias</h2>
+                <p class="text-center text-slate-400 mb-16 max-w-2xl mx-auto">Ferramentas e tecnologias que domino para criar experiências web modernas e eficientes</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- HTML5 -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:border-sky-500">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.56l-5.47 3.15 1.53-6.19L3.4 10.4l6.34-.55L12 4.03l2.26 5.82 6.34.55-4.66 4.12 1.53 6.19z"/><path d="M3.03 3h18l-1.64 18.43L12 24l-7.39-2.57L3.03 3zm14.46 4.13H8.5l.18 2.25h8.63l-.54 6.03-4.77 1.32-4.77-1.32-.33-3.65h2.33l.17 1.87 2.6.7 2.6-.7.27-3.01H7.48l-.54-6.75h10.58l-.03.26z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white text-center mb-2">HTML5</h3>
+                        <p class="text-slate-400 text-center text-sm">Estruturação semântica e acessível</p>
+                    </div>
+
+                    <!-- CSS3 -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:border-sky-500">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M3.03 3h18l-1.64 18.43L12 24l-7.39-2.57L3.03 3zm4.96 8.15l.51 5.68 3.5.96 3.5-.96.54-6.04H8.99l-.16-2.04h7.42l.17-2.04H6.58l.41 4.44z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white text-center mb-2">CSS3</h3>
+                        <p class="text-slate-400 text-center text-sm">Estilização avançada e animações</p>
+                    </div>
+
+                    <!-- Tailwind -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:border-sky-500">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-cyan-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.31.74 1.91 1.35.98 1 2.09 2.15 4.59 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C15.61 7.15 14.5 6 12 6zM7 12c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.91 1.35C8.39 16.85 9.5 18 12 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C10.61 13.15 9.5 12 7 12z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white text-center mb-2">Tailwind CSS</h3>
+                        <p class="text-slate-400 text-center text-sm">Framework CSS utility-first</p>
+                    </div>
+
+                    <!-- JavaScript -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:border-sky-500">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.775l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.611 2.656.427 3.354 1.023.765 2.521.933 2.712 1.653.18.878-.652 1.159-1.475 1.058-.607-.136-.945-.439-1.316-1.002l-1.372.788c.157.359.337.517.607.832 1.305 1.316 4.568 1.249 5.153-.754.021-.067.18-.528.056-1.237l.034.049zm-6.737-5.434h-1.686c0 1.453-.007 2.898-.007 4.354 0 .924.047 1.772-.104 2.033-.247.517-.886.451-1.175.359-.297-.146-.448-.349-.623-.641-.047-.078-.082-.146-.095-.146l-1.368.844c.229.473.563.879.994 1.137.641.383 1.502.507 2.404.305.588-.17 1.095-.519 1.358-1.059.384-.697.302-1.553.299-2.509.008-1.541 0-3.083 0-4.635l.003-.042z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white text-center mb-2">JavaScript</h3>
+                        <p class="text-slate-400 text-center text-sm">Interatividade e lógica front-end</p>
+                    </div>
+
+                    <!-- Firebase -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:border-sky-500">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-orange-400" fill="currentColor" viewBox="0 0 24 24"><path d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white text-center mb-2">Firebase</h3>
+                        <p class="text-slate-400 text-center text-sm">Backend e autenticação</p>
+                    </div>
+
+                    <!-- Git -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:border-sky-500">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.546 10.93L13.067.452a1.55 1.55 0 00-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 012.327 2.341l2.658 2.66a1.838 1.838 0 011.953 3.001 1.837 1.837 0 11-2.905-2.228l-2.482-2.482v6.53a1.837 1.837 0 11-1.456-.09V8.608a1.837 1.837 0 01-.997-2.406l-2.721-2.722L.452 10.913a1.55 1.55 0 000 2.188l10.478 10.478a1.55 1.55 0 002.188 0l10.428-10.43a1.55 1.55 0 000-2.188"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white text-center mb-2">Git & GitHub</h3>
+                        <p class="text-slate-400 text-center text-sm">Controle de versão</p>
+                    </div>
+
+                    <!-- Responsive Design -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:border-sky-500">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-16 h-16 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white text-center mb-2">Design Responsivo</h3>
+                        <p class="text-slate-400 text-center text-sm">Adaptável a todos dispositivos</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projetos Section (ATUALIZADA) -->
-        <section id="projetos" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
+        <!-- Projetos Section -->
+        <section id="projetos" class="py-20 sm:py-28 fade-in-section">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16">Projetos</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">Projetos em Destaque</h2>
+                <p class="text-center text-slate-400 mb-16 max-w-2xl mx-auto">Soluções completas desenvolvidas para resolver problemas reais</p>
 
-                <!-- SUBSEÇÃO: SOLUÇÕES PARA NEGÓCIOS LOCAIS -->
-                <div class="max-w-6xl mx-auto">
+                <!-- PROJETO PRINCIPAL -->
+                <div class="max-w-6xl mx-auto mb-20">
                     <h3 class="text-2xl font-semibold text-sky-400 mb-2 text-center">Soluções para Negócios Locais</h3>
-                    <p class="text-center text-slate-400 mb-12 max-w-3xl mx-auto">Abaixo está um exemplo de uma solução completa desenvolvida para restaurantes, demonstrando a integração de front-end e back-end para criar uma ferramenta de vendas funcional.</p>
+                    <p class="text-center text-slate-400 mb-12 max-w-3xl mx-auto">Exemplo de solução completa desenvolvida para restaurantes, demonstrando a integração de front-end e back-end</p>
 
-                    <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden flex flex-col lg:flex-row">
-                        <div class="lg:w-1/2">
-                            <img class="h-64 lg:h-full w-full object-cover" src="https://placehold.co/800x600/1e293b/991b1b?text=Artesanale" alt="Demonstração do Cardápio Digital da Pizzaria Artesanale">
-                        </div>
-                        <div class="p-8 lg:p-10 flex flex-col flex-grow lg:w-1/2">
-                            <h4 class="text-2xl font-bold text-white">Cardápio Digital com Painel de Controle</h4>
-                            <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Uma solução web completa para restaurantes, desenvolvida do zero. Inclui um cardápio online dinâmico para os clientes e um painel de controle para o proprietário gerenciar produtos em tempo real.</p>
-                            
-                            <div class="mt-6">
-                                <h5 class="font-semibold text-white mb-3">Principais Funcionalidades:</h5>
-                                <ul class="list-disc list-inside text-slate-300 space-y-2">
-                                    <li>Carrinho de compras interativo com finalização de pedido via WhatsApp.</li>
-                                    <li>Painel de controle protegido por login para gerenciamento do cardápio.</li>
-                                    <li>Atualizações em tempo real: mudanças no painel refletem no cardápio instantaneamente.</li>
-                                </ul>
+                    <div class="project-card bg-slate-800 rounded-2xl shadow-2xl shadow-black/30 overflow-hidden border border-slate-700 hover:border-sky-500">
+                        <div class="grid grid-cols-1 lg:grid-cols-2">
+                            <div class="relative overflow-hidden group">
+                                <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://placehold.co/800x600/1e293b/991b1b?text=Artesanale" alt="Demonstração do Cardápio Digital da Pizzaria Artesanale">
+                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent flex items-end p-8">
+                                    <p class="text-white font-semibold">Sistema Completo de Gerenciamento</p>
+                                </div>
                             </div>
-                            
-                            <div class="mt-6 flex flex-wrap gap-2">
-                                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
-                                <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full">Firebase</span>
-                            </div>
+                            <div class="p-8 lg:p-10 flex flex-col">
+                                <h4 class="text-3xl font-bold text-white mb-4">Cardápio Digital com Painel de Controle</h4>
+                                <p class="text-slate-300 leading-relaxed mb-6">Uma solução web completa para restaurantes, desenvolvida do zero. Inclui um cardápio online dinâmico para os clientes e um painel de controle para o proprietário gerenciar produtos em tempo real.</p>
+                                
+                                <div class="mb-6">
+                                    <h5 class="font-semibold text-white mb-3">Principais Funcionalidades:</h5>
+                                    <ul class="space-y-2 text-slate-300">
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-sky-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                            Carrinho de compras interativo com finalização via WhatsApp
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-sky-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                            Painel de controle protegido por autenticação
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-sky-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                            Atualizações em tempo real no cardápio
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mb-8 flex flex-wrap gap-2">
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full border border-sky-700">JavaScript</span>
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full border border-sky-700">Tailwind CSS</span>
+                                    <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full border border-orange-700">Firebase</span>
+                                </div>
 
-                            <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                                <a href="https://pizzaria-artesanale-cardapio.web.app" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Cardápio Ao Vivo</a>
-                                <a href="https://pizzaria-artesanale-cardapio.web.app/admin.html" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Acessar Painel ADM</a>
+                                <div class="mt-auto flex flex-col sm:flex-row gap-4">
+                                    <a href="https://pizzaria-artesanale-cardapio.web.app" target="_blank" class="flex-1 text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 shadow-lg shadow-sky-500/20">
+                                        Ver Cardápio Ao Vivo
+                                    </a>
+                                    <a href="https://pizzaria-artesanale-cardapio.web.app/admin.html" target="_blank" class="flex-1 text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 border border-slate-600">
+                                        Painel ADM
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- OUTROS PROJETOS -->
-                <div class="mt-20 max-w-5xl mx-auto">
-                     <h3 class="text-2xl font-semibold text-sky-400 mb-12 text-center">Outros Projetos</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                        <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/FBBF24?text=Quiz+Bíblico" alt="Imagem do projeto Quiz Bíblico">
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-2xl font-bold text-white">Quiz Bíblico - Jornada da Fé</h3>
-                                <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Um PWA de Quiz interativo com 500 perguntas sobre a Bíblia, utilizando Firebase para autenticação e salvamento de progresso em tempo real.</p>
-                                <div class="mt-6 flex flex-wrap gap-2">
-                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                    <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full">Firebase</span>
+                <div class="max-w-6xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-sky-400 mb-12 text-center">Outros Projetos</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <!-- Quiz Bíblico -->
+                        <div class="project-card bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden border border-slate-700 hover:border-sky-500 flex flex-col">
+                            <div class="relative overflow-hidden group">
+                                <img class="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://placehold.co/600x400/1e293b/FBBF24?text=Quiz+Bíblico" alt="Imagem do projeto Quiz Bíblico">
+                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent flex items-end p-6">
+                                    <p class="text-white font-semibold">PWA com 500+ Perguntas</p>
                                 </div>
-                                <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                                    <a href="https://quiz-biblico-cf2f9.web.app/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Projeto</a>
-                                    <a href="https://github.com/tiagopinheiro8080/quiz-biblico" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Ver Código</a>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-white mb-3">Quiz Bíblico - Jornada da Fé</h3>
+                                <p class="text-slate-300 leading-relaxed flex-grow mb-6">Um PWA de Quiz interativo com 500 perguntas sobre a Bíblia, utilizando Firebase para autenticação e salvamento de progresso em tempo real.</p>
+                                
+                                <div class="mb-6 flex flex-wrap gap-2">
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full border border-sky-700">JavaScript</span>
+                                    <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full border border-orange-700">Firebase</span>
+                                    <span class="bg-purple-900/50 text-purple-300 text-sm font-medium px-3 py-1 rounded-full border border-purple-700">PWA</span>
+                                </div>
+                                
+                                <div class="flex flex-col sm:flex-row gap-3">
+                                    <a href="https://quiz-biblico-cf2f9.web.app/" target="_blank" class="flex-1 text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 shadow-lg shadow-sky-500/20">
+                                        Ver Projeto
+                                    </a>
+                                    <a href="https://github.com/tiagopinheiro8080/quiz-biblico" target="_blank" class="flex-1 text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 border border-slate-600">
+                                        Ver Código
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/3b82f6?text=Gerador+CV" alt="Imagem do projeto Gerador de Currículos">
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-2xl font-bold text-white">Gerador de Currículos PRO</h3>
-                                <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Aplicação que permite criar currículos profissionais a partir de múltiplos templates e temas de cores, com pré-visualização em tempo real e exportação para PDF.</p>
-                                <div class="mt-6 flex flex-wrap gap-2">
-                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                    <span class="bg-red-900/50 text-red-300 text-sm font-medium px-3 py-1 rounded-full">jsPDF</span>
+                        <!-- Gerador de Currículos -->
+                        <div class="project-card bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden border border-slate-700 hover:border-sky-500 flex flex-col">
+                            <div class="relative overflow-hidden group">
+                                <img class="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://placehold.co/600x400/1e293b/3b82f6?text=Gerador+CV" alt="Imagem do projeto Gerador de Currículos">
+                                <div class="project-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent flex items-end p-6">
+                                    <p class="text-white font-semibold">Múltiplos Templates & Exportação PDF</p>
                                 </div>
-                                <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                                    <a href="https://tiagopinheiro8080.github.io/gerador-de-curriculos/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Projeto</a>
-                                    <a href="https://github.com/tiagopinheiro8080/gerador-de-curriculos" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Ver Código</a>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-2xl font-bold text-white mb-3">Gerador de Currículos PRO</h3>
+                                <p class="text-slate-300 leading-relaxed flex-grow mb-6">Aplicação que permite criar currículos profissionais a partir de múltiplos templates e temas de cores, com pré-visualização em tempo real e exportação para PDF.</p>
+                                
+                                <div class="mb-6 flex flex-wrap gap-2">
+                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full border border-sky-700">JavaScript</span>
+                                    <span class="bg-red-900/50 text-red-300 text-sm font-medium px-3 py-1 rounded-full border border-red-700">jsPDF</span>
+                                    <span class="bg-green-900/50 text-green-300 text-sm font-medium px-3 py-1 rounded-full border border-green-700">HTML2Canvas</span>
+                                </div>
+                                
+                                <div class="flex flex-col sm:flex-row gap-3">
+                                    <a href="https://tiagopinheiro8080.github.io/gerador-de-curriculos/" target="_blank" class="flex-1 text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 shadow-lg shadow-sky-500/20">
+                                        Ver Projeto
+                                    </a>
+                                    <a href="https://github.com/tiagopinheiro8080/gerador-de-curriculos" target="_blank" class="flex-1 text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-all hover:scale-105 border border-slate-600">
+                                        Ver Código
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -182,34 +414,88 @@
         </section>
 
         <!-- Contato Section -->
-        <section id="contato" class="py-20 sm:py-28 fade-in-section">
+        <section id="contato" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
             <div class="container mx-auto px-6 max-w-3xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Vamos Conversar?</h2>
-                <p class="mt-4 text-lg text-slate-300">Estou disponível para novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato.</p>
-                <div class="mt-8">
-                    <a href="mailto:tiagopinheiro8080@gmail.com" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold text-lg py-4 px-8 rounded-lg transition-transform hover:scale-105">
-                        Enviar um Email
-                    </a>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Vamos Conversar?</h2>
+                <p class="text-xl text-slate-300 mb-8">Estou disponível para novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato.</p>
+                
+                <div class="bg-slate-800 rounded-2xl p-8 shadow-2xl border border-slate-700 mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="mailto:tiagopinheiro8080@gmail.com" class="flex flex-col items-center p-4 rounded-lg hover:bg-slate-700 transition-colors group">
+                            <svg class="w-12 h-12 text-sky-400 mb-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                            <span class="text-white font-semibold">Email</span>
+                            <span class="text-slate-400 text-sm mt-1">tiagopinheiro8080@gmail.com</span>
+                        </a>
+                        
+                        <a href="https://github.com/tiagopinheiro8080" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover:bg-slate-700 transition-colors group">
+                            <svg class="w-12 h-12 text-sky-400 mb-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                            <span class="text-white font-semibold">GitHub</span>
+                            <span class="text-slate-400 text-sm mt-1">@tiagopinheiro8080</span>
+                        </a>
+                        
+                        <a href="https://www.linkedin.com/in/tiagopinheiro8080/" target="_blank" class="flex flex-col items-center p-4 rounded-lg hover:bg-slate-700 transition-colors group">
+                            <svg class="w-12 h-12 text-sky-400 mb-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            <span class="text-white font-semibold">LinkedIn</span>
+                            <span class="text-slate-400 text-sm mt-1">@tiagopinheiro8080</span>
+                        </a>
+                    </div>
                 </div>
+                
+                <a href="mailto:tiagopinheiro8080@gmail.com" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold text-lg py-4 px-10 rounded-lg transition-all hover:scale-105 shadow-lg shadow-sky-500/30">
+                    Enviar um Email
+                </a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-800/50 text-slate-400 py-6">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 Tiago Pinheiro. Todos os direitos reservados.</p>
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-center md:text-left">&copy; 2025 Tiago Pinheiro. Todos os direitos reservados.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/tiagopinheiro8080" target="_blank" class="hover:text-sky-400 transition-colors">GitHub</a>
+                    <a href="https://www.linkedin.com/in/tiagopinheiro8080/" target="_blank" class="hover:text-sky-400 transition-colors">LinkedIn</a>
+                    <a href="mailto:tiagopinheiro8080@gmail.com" class="hover:text-sky-400 transition-colors">Email</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
@@ -230,9 +516,42 @@
             observer.observe(section);
         });
 
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
         // Typing effect
         const typingElement = document.getElementById('typing-effect');
-        const words = ["Desenvolvedor Web", "Criador de Soluções Digitais"];
+        const words = ["Desenvolvedor Web", "Criador de Soluções Digitais", "Especialista em Firebase"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -250,19 +569,19 @@
             let typeSpeed = isDeleting ? 100 : 200;
 
             if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; // Pause at end of word
+                typeSpeed = 2000;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500; // Pause before new word
+                typeSpeed = 500;
             }
 
             setTimeout(type, typeSpeed);
         }
+        
         document.addEventListener('DOMContentLoaded', type);
     </script>
 
 </body>
 </html>
-
