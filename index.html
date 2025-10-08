@@ -77,7 +77,7 @@
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Sobre Mim</h2>
                         <div class="mt-6 text-lg text-slate-300 leading-relaxed space-y-4">
                             <p>Olá! Eu sou o Tiago Pinheiro, um desenvolvedor de 28 anos apaixonado por tecnologia e por transformar ideias em experiências digitais interativas e significativas.</p>
-                            <p>Com foco em tecnologias front-end, busco construir aplicações funcionais, visualmente atraentes e com uma ótima experiência para o usuário. Estou sempre aprendendo e explorando novas maneiras de construir para a web.</p>
+                            <p>Com foco em tecnologias modernas, busco construir aplicações funcionais, visualmente atraentes e com uma ótima experiência para o usuário. Meu principal objetivo é criar soluções digitais que resolvem problemas reais para negócios locais.</p>
                         </div>
                     </div>
                 </div>
@@ -100,48 +100,58 @@
             </div>
         </section>
 
-        <!-- Projetos Section -->
+        <!-- Projetos Section (ATUALIZADA) -->
         <section id="projetos" class="py-20 sm:py-28 bg-slate-800/50 fade-in-section">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-16">Projetos</h2>
 
-                <!-- Subseção: Soluções para Negócios Locais -->
-                <div class="max-w-6xl mx-auto mb-16">
-                    <h3 class="text-2xl md:text-3xl font-bold text-sky-400 mb-2 text-center">Soluções para Negócios Locais</h3>
-                    <p class="text-center text-slate-400 mb-12 max-w-3xl mx-auto">Demonstrações de produtos reais desenvolvidos para automatizar e impulsionar pequenos e médios negócios.</p>
+                <!-- SUBSEÇÃO: SOLUÇÕES PARA NEGÓCIOS LOCAIS -->
+                <div class="max-w-6xl mx-auto">
+                    <h3 class="text-2xl font-semibold text-sky-400 mb-2 text-center">Soluções para Negócios Locais</h3>
+                    <p class="text-center text-slate-400 mb-12 max-w-3xl mx-auto">Abaixo está um exemplo de uma solução completa desenvolvida para restaurantes, demonstrando a integração de front-end e back-end para criar uma ferramenta de vendas funcional.</p>
 
-                    <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                        <img class="h-64 w-full object-cover object-top" src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=2535&auto=format&fit=crop" alt="Imagem de uma pizza italiana saborosa">
-                        <div class="p-6 md:p-8">
+                    <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden flex flex-col lg:flex-row">
+                        <div class="lg:w-1/2">
+                            <img class="h-64 lg:h-full w-full object-cover" src="https://placehold.co/800x600/1e293b/991b1b?text=Artesanale" alt="Demonstração do Cardápio Digital da Pizzaria Artesanale">
+                        </div>
+                        <div class="p-8 lg:p-10 flex flex-col flex-grow lg:w-1/2">
                             <h4 class="text-2xl font-bold text-white">Cardápio Digital com Painel de Controle</h4>
-                            <p class="mt-4 text-slate-300 leading-relaxed">Uma solução completa para restaurantes que digitaliza o cardápio, otimiza o fluxo de pedidos via WhatsApp e capacita o dono do negócio com total controle sobre seus produtos através de um painel administrativo.</p>
+                            <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Uma solução web completa para restaurantes, desenvolvida do zero. Inclui um cardápio online dinâmico para os clientes e um painel de controle para o proprietário gerenciar produtos em tempo real.</p>
+                            
+                            <div class="mt-6">
+                                <h5 class="font-semibold text-white mb-3">Principais Funcionalidades:</h5>
+                                <ul class="list-disc list-inside text-slate-300 space-y-2">
+                                    <li>Carrinho de compras interativo com finalização de pedido via WhatsApp.</li>
+                                    <li>Painel de controle protegido por login para gerenciamento do cardápio.</li>
+                                    <li>Atualizações em tempo real: mudanças no painel refletem no cardápio instantaneamente.</li>
+                                </ul>
+                            </div>
+                            
                             <div class="mt-6 flex flex-wrap gap-2">
                                 <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
                                 <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
                                 <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full">Firebase</span>
-                                <span class="bg-green-900/50 text-green-300 text-sm font-medium px-3 py-1 rounded-full">PWA</span>
                             </div>
+
                             <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                                <a href="https://exquisite-youtiao-060952.netlify.app/" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Demostração</a>
-                                <!-- Você pode adicionar o link do painel admin aqui quando estiver online -->
-                                <!-- <a href="#" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Testar Painel</a> -->
+                                <a href="https://pizzaria-artesanale-cardapio.web.app" target="_blank" class="w-full text-center bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">Ver Cardápio Ao Vivo</a>
+                                <a href="https://pizzaria-artesanale-cardapio.web.app/admin.html" target="_blank" class="w-full text-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-bold py-3 px-6 rounded-lg transition-colors">Acessar Painel ADM</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Subseção: Projetos Pessoais -->
-                <div class="max-w-5xl mx-auto">
-                    <h3 class="text-2xl md:text-3xl font-bold text-sky-400 mb-12 text-center">Projetos Pessoais</h3>
+                <!-- OUTROS PROJETOS -->
+                <div class="mt-20 max-w-5xl mx-auto">
+                     <h3 class="text-2xl font-semibold text-sky-400 mb-12 text-center">Outros Projetos</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                         <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/FBBF24?text=Quiz+Bíblico" alt="[Imagem do projeto Quiz Bíblico]">
+                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/FBBF24?text=Quiz+Bíblico" alt="Imagem do projeto Quiz Bíblico">
                             <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-2xl font-bold text-white">Quiz Bíblico - Jornada da Fé</h3>
                                 <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Um PWA de Quiz interativo com 500 perguntas sobre a Bíblia, utilizando Firebase para autenticação e salvamento de progresso em tempo real.</p>
                                 <div class="mt-6 flex flex-wrap gap-2">
                                     <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
                                     <span class="bg-orange-900/50 text-orange-300 text-sm font-medium px-3 py-1 rounded-full">Firebase</span>
                                 </div>
                                 <div class="mt-8 flex flex-col sm:flex-row gap-4">
@@ -152,13 +162,12 @@
                         </div>
 
                         <div class="bg-slate-800 rounded-xl shadow-2xl shadow-black/20 overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
-                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/3b82f6?text=Gerador+CV" alt="[Imagem do projeto Gerador de Currículos]">
+                            <img class="h-56 w-full object-cover" src="https://placehold.co/600x400/1e293b/3b82f6?text=Gerador+CV" alt="Imagem do projeto Gerador de Currículos">
                             <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-2xl font-bold text-white">Gerador de Currículos PRO</h3>
                                 <p class="mt-4 text-slate-300 leading-relaxed flex-grow">Aplicação que permite criar currículos profissionais a partir de múltiplos templates e temas de cores, com pré-visualização em tempo real e exportação para PDF.</p>
                                 <div class="mt-6 flex flex-wrap gap-2">
                                     <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
                                     <span class="bg-red-900/50 text-red-300 text-sm font-medium px-3 py-1 rounded-full">jsPDF</span>
                                 </div>
                                 <div class="mt-8 flex flex-col sm:flex-row gap-4">
@@ -223,7 +232,7 @@
 
         // Typing effect
         const typingElement = document.getElementById('typing-effect');
-        const words = ["Desenvolvedor Web", "Criador de Experiências Digitais", "Soluções para Negócios"];
+        const words = ["Desenvolvedor Web", "Criador de Soluções Digitais"];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -238,7 +247,7 @@
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 75 : 150;
+            let typeSpeed = isDeleting ? 100 : 200;
 
             if (!isDeleting && charIndex === currentWord.length) {
                 typeSpeed = 2000; // Pause at end of word
